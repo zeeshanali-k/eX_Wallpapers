@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_wallpapers">
+
+    <fragment
+        android:id="@+id/navigation_wallpapers"
+        android:name="com.techsensei.exwallpapers.ui.wallpapers.WallpapersFrag"
+        android:label="@string/title_wallpaper"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_navigation_wallpapers_to_previewFrag"
+            app:destination="@id/previewFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="com.techsensei.exwallpapers.ui.category.CategoryFrag"
+        android:label="@string/title_categories"
+        tools:layout="@layout/fragment_wallpapers" >
+        <action
+            android:id="@+id/action_navigation_category_to_categoryDetailFrag"
+            app:destination="@id/categoryDetailFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_likes"
+        android:name="com.techsensei.exwallpapers.ui.likes.LikesFrag"
+        android:label="@string/title_likes"
+        tools:layout="@layout/fragment_likes" >
+        <action
+            android:id="@+id/action_navigation_likes_to_previewFrag"
+            app:destination="@id/previewFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/categoryDetailFrag"
+        android:name="com.techsensei.exwallpapers.ui.categoryDetail.CategoryDetailActivity"
+        android:label="{category}"
+        tools:layout="@layout/category_detail_fragment" >
+        <argument
+            android:name="category"
+            app:nullable="false"
+            app:argType="string"
+            />
+        <action
+            android:id="@+id/action_categoryDetailFrag_to_previewFrag"
+            app:destination="@id/previewFrag"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/previewFrag"
+        android:name="com.techsensei.exwallpapers.ui.preview.PreviewActivity"
+        android:label="{category}"
+        tools:layout="@layout/fragment_preview" >
+
+        <argument
+            app:argType="com.techsensei.exwallpapers.models.Wallpaper"
+            app:nullable="false"
+            android:name="wallpaper"
+            />
+
+        <argument
+            app:argType="string"
+            app:nullable="false"
+            android:name="category"
+            />
+
+    </fragment>
+
+</navigation>

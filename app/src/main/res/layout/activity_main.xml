@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/appBg"
+        tools:context=".MainActivity">
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/app_header"
+            android:id="@+id/main_toolbar"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5dp"
+            />
+
+        <github.com.st235.lib_expandablebottombar.ExpandableBottomBar
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:exb_transitionDuration="200"
+            app:exb_backgroundColor="@color/colorPrimary"
+            app:exb_itemInactiveColor="#fff"
+            app:exb_item_vertical_margin="5dp"
+            app:exb_elevation="5dp"
+            android:background="@android:color/transparent"
+            app:exb_itemStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/main_view_pager"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:defaultNavHost="true"
+            app:layout_constraintBottom_toTopOf="@id/nav_view"
+            app:layout_constraintTop_toBottomOf="@id/main_toolbar"
+            app:navGraph="@navigation/mobile_navigation" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

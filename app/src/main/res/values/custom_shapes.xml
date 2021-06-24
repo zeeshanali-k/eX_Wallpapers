@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="DownloadFABStyle">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSizeTopLeft">0%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+        <item name="cornerSizeTopRight">0%</item>
+    </style>
+
+    <style name="DownloadFABRoundedStyle">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+        <item name="cornerSizeTopRight">50%</item>
+    </style>
+
+</resources>

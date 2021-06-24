@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">eX Wallpapers</string>
+    <string name="title_wallpaper">Wallpapers</string>
+    <string name="title_categories">Categories</string>
+    <string name="title_likes">Liked</string>
+
+    <string-array name="anime_categories_names">
+        <item>Attack On Titan</item>
+        <item>Boruto</item>
+        <item>Code Geass</item>
+        <item>Death Note</item>
+        <item>Dr Stone</item>
+        <item>Kimetsu No Yaiba</item>
+        <item>Fairy Tale</item>
+        <item>Hunter x Hunter</item>
+        <item>My Hero Academia</item>
+        <item>Naruto</item>
+        <item>One Piece</item>
+        <item>One Punch Man</item>
+        <item>Pokemon</item>
+        <item>Seven Deadly Sins</item>
+        <item>Sword Art Online</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_anime">Search Anime</string>
+
+
+</resources>

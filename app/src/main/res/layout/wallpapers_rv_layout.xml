@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+<!--        <import type="android.view.View"/>-->
+        <variable
+            name="wallpaper"
+            type="com.techsensei.exwallpapers.models.Wallpaper" />
+
+        <variable
+            name="isFav"
+            type="boolean" />
+
+<!--        <variable-->
+<!--            name="isDownloading"-->
+<!--            type="boolean" />-->
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:id="@+id/wallpapers_rv_card"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_margin="5dp"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/rvItemColor"
+            android:elevation="5dp"
+            >
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/wallpapers_rv_img"
+                    android:layout_margin="5dp"
+                    setFavourite="@{isFav}"
+                    android:id="@+id/wallpapers_rv_fav"
+                    android:src="@drawable/ic_baseline_favorite_border_24"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@id/wallpapers_rv_fav"
+                    app:layout_constraintTop_toTopOf="@id/wallpapers_rv_fav"
+                    app:layout_constraintBottom_toBottomOf="@id/wallpapers_rv_fav"
+                    android:text="@{String.valueOf(wallpaper.likes), default=`0`}"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"
+                    android:layout_margin="5dp"
+                    android:padding="5dp"
+                    android:visibility="gone"
+                    />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:src="@drawable/ph"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/wallpapers_rv_img"
+                    setWallpaper="@{wallpaper.thumbnail}"
+                    app:layout_constraintTop_toBottomOf="@id/wallpapers_rv_fav"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toBottomOf="@id/wallpapers_rv_img"
+                    android:background="@color/rvItemColor"
+                    android:padding="5dp"
+                    android:textStyle="bold"
+                    android:text="@{wallpaper.category, default=`Shingeki No Kyojin`}"
+                    android:textAlignment="center"
+                    android:id="@+id/wallpaper_rv_title"
+                    android:textColor="@color/white"
+                    />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintBottom_toTopOf="@id/wallpaper_rv_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/wallpapers_rv_download_btn"
+                    android:layout_margin="10dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:src="@drawable/ic_baseline_cloud_download_24"
+                    app:shapeAppearanceOverlay="@style/DownloadFABRoundedStyle"
+                    />
+
+<!--                <ProgressBar-->
+<!--                    android:visibility="@{isDownloading?View.VISIBLE:View.GONE}"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintTop_toTopOf="@id/wallpapers_rv_download_btn"-->
+<!--                    app:layout_constraintStart_toStartOf="@id/wallpapers_rv_download_btn"-->
+<!--                    app:layout_constraintEnd_toEndOf="@id/wallpapers_rv_download_btn"-->
+<!--                    app:layout_constraintBottom_toBottomOf="@id/wallpapers_rv_download_btn"-->
+<!--                    />-->
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

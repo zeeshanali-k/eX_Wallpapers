@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="colorPrimary">#222831</color>
+    <color name="appBg">#393E46</color>
+    <color name="colorPrimaryDark">#036766</color>
+
+    <color name="colorSecondaryVariant">#6905A6</color>
+    <color name="colorSecondary">#F05454</color>
+    <color name="colorSecondary2">#DA032E</color>
+
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#E8E6E6</color>
+    <color name="teal_transparent_50">#80018786</color>
+    <color name="teal_transparent_70">#B3018786</color>
+    <color name="teal_transparent_80">#CC018786</color>
+    <color name="rvItemColor">#7E7474</color>
+    <color name="tabSelectedItem">#FFD369</color>
+</resources>
