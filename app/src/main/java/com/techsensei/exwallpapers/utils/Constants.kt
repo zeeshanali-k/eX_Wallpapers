@@ -6,7 +6,9 @@ class Constants {
         const val WALLPAPER_DATA: String="wallpaper"
         const val CATEGORY_KEY: String="category"
         const val AUTH_PASSCODE="itsmylinodevps"
-        const val RETROFIT_BASE_URL="https://devscion.site/apps/ex_wallpapers/"
+//         TODO: REPLACE PLACEHOLDER WITH URL
+//         TODO: Add google-services.json from firebase
+        const val RETROFIT_BASE_URL="https://YOUR_URL/"
         const val TAG="tagg"
         const val APP_DIR_NAME = "eX Wallpapers"
 
