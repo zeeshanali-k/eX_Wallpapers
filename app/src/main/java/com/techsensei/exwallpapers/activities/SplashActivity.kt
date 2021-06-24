@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.coroutines.CoroutineContext
 
-class SplashActivity : AppCompatActivity(), View.OnClickListener ,OnDatabaseInsertedListener{
+class SplashActivity : AppCompatActivity(){
     private lateinit var splashBinding: ActivitySplashBinding
     private lateinit var wallpapersViewModel: WallpapersViewModel
     private lateinit var sharedPreferences: SharedPreferences
@@ -41,7 +41,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener ,OnDatabaseInse
             .format(Date())
         sharedPreferences = getSharedPreferences(PrefConstants.PREF_NAME, MODE_PRIVATE)
 //        checking date
-        if (sharedPreferences.getString(PrefConstants.DATE_PREF, null) == null ||
+       /* if (sharedPreferences.getString(PrefConstants.DATE_PREF, null) == null ||
             !sharedPreferences.getString(PrefConstants.DATE_PREF, null).equals( todayDate)
         ) {
             wallpapersViewModel = ViewModelProvider(this)
@@ -64,17 +64,18 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener ,OnDatabaseInse
             })
             wallpapersViewModel.setListener(this)
             wallpapersViewModel.makeWallpapersReq()
-        } else {
-            splashBinding.splashLoading.pauseAnimation()
-            splashBinding.isNotLoading=true
+        } else {*/
+//            splashBinding.splashLoading.pauseAnimation()
+//            splashBinding.isNotLoading=true
+
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(Intent(applicationContext, MainActivity::class.java))
                 finish()
             }, 1000)
-        }
+//        }
     }
 
-
+/*
     override fun onClick(v: View?) {
         splashBinding.reloadBtn.animate()
             .scaleX(0F)
@@ -92,7 +93,7 @@ class SplashActivity : AppCompatActivity(), View.OnClickListener ,OnDatabaseInse
             .apply()
         startActivity(Intent(applicationContext, MainActivity::class.java))
         finish()
-    }
+    }*/
 
 
 }

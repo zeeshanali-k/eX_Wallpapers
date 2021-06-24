@@ -12,7 +12,7 @@ interface ApiClient {
 
     @GET("get-wallpapers-by-category.php")
     fun getWallpapersByCategory(
-        @Query("auth") auth: String,
+//        @Query("auth") auth: String,
         @Query("category") category: String
     ): Call<List<Wallpaper>>
 

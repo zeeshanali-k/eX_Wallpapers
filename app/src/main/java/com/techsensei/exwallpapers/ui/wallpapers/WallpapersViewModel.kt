@@ -43,11 +43,26 @@ class WallpapersViewModel(application: Application) : AndroidViewModel(applicati
 
     fun manageFav(wallpaper: Wallpaper, isWallpapersFrag: Boolean = false) {
         WallpapersDatabase.databaseWriteExecutor.execute {
-            wallpaper.isFavourite = !wallpaper.isFavourite
-            wallpapersDAO.updateFavourite(wallpaper)
+            Log.d(TAG, "manageFav: "+wallpaper.isFavourite)
+            if (!wallpaper.isFavourite) {
+                wallpaper.isFavourite = true
+                wallpapersDAO.addToFavourite(wallpaper)
+            }
+            else {
+                wallpapersDAO.deleteFavWallpaper(wallpaper)
+                wallpaper.isFavourite=false
+            }
             wallpapersDBLiveData.postValue(wallpapersDAO.getFavWallpapers())
-            if (!isWallpapersFrag)
-                wallpapersLiveData.postValue(wallpapersDAO.getAllWallpapers())
+            if (!isWallpapersFrag) {
+                val tempWallpapers=wallpapersLiveData.value
+                for ((i,tempWallpaper) in tempWallpapers!!.withIndex()){
+                    if (wallpaper.id==tempWallpaper.id){
+                        tempWallpapers[i].isFavourite=wallpaper.isFavourite
+                        break
+                    }
+                }
+                wallpapersLiveData.postValue(tempWallpapers)
+            }
         }
     }
 
@@ -81,8 +96,8 @@ class WallpapersViewModel(application: Application) : AndroidViewModel(applicati
     }
 
     suspend fun insertAllWallpapers(wallpapers: List<Wallpaper>) {
-            wallpapersDAO.insertAllWallpapers(wallpapers)
-            listener.onDataAdded()
+        wallpapersDAO.insertAllWallpapers(wallpapers)
+        listener.onDataAdded()
     }
 
     fun addWallpapersToDatabase(favs: List<Wallpaper>, it: List<Wallpaper>) {

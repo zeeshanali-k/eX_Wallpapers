@@ -26,6 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/logo" />
+<!--
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="wrap_content"
@@ -51,6 +52,7 @@
             android:onClick="onClick"
             android:visibility="@{isRetry?View.VISIBLE:View.GONE}"
             android:id="@+id/reload_btn" />
+-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

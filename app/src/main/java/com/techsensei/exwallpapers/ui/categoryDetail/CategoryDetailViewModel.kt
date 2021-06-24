@@ -30,9 +30,24 @@ class CategoryDetailViewModel(application: Application) : AndroidViewModel(appli
 
 
     fun getWallpapersByCategory(category:String){
-        WallpapersDatabase.databaseWriteExecutor.execute {
-            wallpapersLiveData.postValue(favsHandler.getWallpapersByCategory(category))
-        }
+        ApiClientProvider.getApiClient().getWallpapersByCategory(category)
+            .enqueue(object : Callback<List<Wallpaper>> {
+                override fun onResponse(
+                    call: Call<List<Wallpaper>>,
+                    response: Response<List<Wallpaper>>
+                ) {
+                    if (response.isSuccessful && response.body()!=null && response.body()!!.isNotEmpty()){
+                        wallpapersLiveData.postValue(response.body())
+                    }else{
+                        wallpapersLiveData.postValue(null)
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Wallpaper>>, t: Throwable) {
+                    wallpapersLiveData.postValue(null)
+                }
+
+            })
     }
 
     fun addFav(wallpaper: Wallpaper) {

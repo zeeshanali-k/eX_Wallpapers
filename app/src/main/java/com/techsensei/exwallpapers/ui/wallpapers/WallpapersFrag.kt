@@ -56,6 +56,7 @@ class WallpapersFrag : Fragment(), onRvClickListener {
 
             if (it != null && it.isNotEmpty()) {
                 wallpapers = it
+                checkFavWallpapers()
 //                if (recyclerView.adapter==null) {
                 var lastPos = -1
                 if (recyclerView.layoutManager != null)
@@ -74,7 +75,26 @@ class WallpapersFrag : Fragment(), onRvClickListener {
 //                }
             }
         })
-        wallpapersViewModel.getAllWallpapers()
+        wallpapersViewModel.makeWallpapersReq()
+    }
+
+    private fun checkFavWallpapers() {
+        wallpapersViewModel.wallpapersDBLiveData.observe(viewLifecycleOwner, {
+            for ((i, wallpaper) in wallpapers.withIndex()) {
+                if (favContainsWallpaper(wallpaper, it))
+                    wallpapers[i].isFavourite = true
+            }
+        })
+        wallpapersViewModel.getFavWallpapers()
+    }
+
+    private fun favContainsWallpaper(wallpaper: Wallpaper, favs: List<Wallpaper>): Boolean {
+        for (favWallpaper in favs) {
+            Log.d(TAG, " ${favWallpaper.id} : ${wallpaper.id}")
+            if (favWallpaper.id == wallpaper.id)
+                return true
+        }
+        return false
     }
 
     override fun onItemClicked(pos: Int) {
@@ -88,7 +108,8 @@ class WallpapersFrag : Fragment(), onRvClickListener {
     }
 
     override fun onFavAdded(pos: Int) {
-        wallpapers[pos].date = Date().time
+        if (!wallpapers[pos].isFavourite)
+            wallpapers[pos].date = Date().time
         wallpapersViewModel.manageFav(wallpapers[pos], true)
     }
 

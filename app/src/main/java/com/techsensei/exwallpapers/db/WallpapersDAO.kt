@@ -27,4 +27,7 @@ interface WallpapersDAO {
     @Query("SELECT COUNT(*) FROM wallpapers")
     fun getWallpapersCount():Int
 
+    @Delete
+    fun deleteFavWallpaper(wallpaper: Wallpaper)
+
 }
